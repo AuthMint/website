@@ -226,6 +226,8 @@
 
         },
 
+
+
         methods: {
             navToggle: function () {
                 let btn = document.getElementById('menuBtn');
@@ -247,6 +249,7 @@
                     btt.classList.remove('block');
                 }
             }
+
 
 
         }
