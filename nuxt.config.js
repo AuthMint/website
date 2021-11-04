@@ -4,14 +4,14 @@ export default {
 
     // Global App headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'My Nuxt Application',
+        title: 'AuthMint: monetize digital assets',
         meta: [
             {charset: 'utf-8'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
             {
                 hid: 'description',
                 name: 'description',
-                content: 'This is an awesome description of my Nuxt app',
+                content: 'NFT licensing market for photography/design/music/video/software',
             },
 
         ],
