@@ -5,6 +5,9 @@ export default {
     // Global App headers: https://go.nuxtjs.dev/config-head
     head: {
         title: 'AuthMint: monetize digital assets',
+        htmlAttrs: {
+            "data-theme": 'cyberpunk'
+        },
         meta: [
             {charset: 'utf-8'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
@@ -29,7 +32,7 @@ export default {
             {src: 'https://unpkg.com/popper.js@1'},
             {src: 'https://unpkg.com/tippy.js@4'},
         ],
-        __dangerouslyDisableSanitizers: ['script', 'innerHTML'],
+        __dangerouslyDisableSafnitizers: ['script', 'innerHTML'],
     },
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [],
@@ -42,7 +45,6 @@ export default {
 
 
     // Modules: https://go.nuxtjs.dev/config-modules
-    modules: [
-
-    ]
+    modules: ['@nuxtjs/axios'],
+    serverMiddleware: [{path: '/api', handler: '~/api/index.js'}]
 };
