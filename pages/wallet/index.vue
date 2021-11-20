@@ -27,13 +27,22 @@
       </div>
     </nav>
     <div class="pt-2 m-10">
+      <div class="w-full flex justify-end	">
+        <a href="/wallet/create">
+          <button class="btn btn-primary" v-if="!loading">
+            Create NFT
+          </button>
+        </a>
+      </div>
       <button class="btn btn-primary" v-if="loading">
         Loading...
       </button>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" v-if="!loading">
 
         <div class="card bordered" v-for="item in items" :key="item.image">
-          <figure><img v-bind:src="item.image" class="w-full"></figure>
+          <div class="w-full aspect-w-1 aspect-h-1 "><img v-bind:src="getIPFSlink(item.imageIpfs)"
+                                                          class="object-cover min-w-full min-h-full h-full mx-auto ">
+          </div>
           <div class="card-body"><h2 class="card-title">{{ item.name }}</h2>
             <p>
               {{ item.description }}
@@ -54,8 +63,8 @@
 import {ethers} from "ethers";
 import marketABI from '~/static/contracts/Market.json'
 import marketAddress from '~/static/contracts/address-Market.json'
-import amoAddress from '~/static/contracts/address-Original.json'
-import amoABI from '~/static/contracts/Original.json'
+import amoAddress from '~/static/contracts/address-Origin.json'
+import amoABI from '~/static/contracts/Origin.json'
 
 
 export default {
@@ -92,12 +101,13 @@ export default {
       let itemDetails = await this.$axios.get(this.getIPFSlink(ipfsHash))
       this.items.push(itemDetails.data)
     }
+    console.log(this.items)
     this.loading = false
   },
 
   methods: {
     getIPFSlink(hash) {
-      return `https://gateway.pinata.cloud/ipfs/${hash}`
+      return `https://ipfs.io/ipfs/${hash}`
     },
     async contractConnect() {
       if (this.isEthereumSupported()) {
@@ -144,7 +154,7 @@ export default {
 
     mint: async function () {
       let amo = new ethers.Contract(this.amoAddress, amoABI.abi, this.provider.getSigner());
-      let result = await amo.mintOriginal('ipfs://QmNvSpkovzy8Rb8dcJYCLB16RE6if4MenuyxEV6RgY3Nai')
+      let result = await amo.mintOrigin('ipfs://QmNvSpkovzy8Rb8dcJYCLB16RE6if4MenuyxEV6RgY3Nai')
       console.log(result)
     },
 

@@ -9,6 +9,7 @@ module.exports = {
   },
   plugins: [
     require('daisyui'),
+    require('@tailwindcss/aspect-ratio'),
   ],
   daisyui: {
     styled: true,
@@ -19,8 +20,6 @@ module.exports = {
     rtl: false,
   },
   themes: [
-    'cyberpunk',
-    'forest',
-    'synthwave'
+    'cyberpunk'
   ],
 }
