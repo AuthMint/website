@@ -3,11 +3,11 @@
     <Navbar/>
     <div class="pt-2 m-10">
       <div class="w-full flex justify-end	">
-        <router-link to="/wallet/create">
+        <nuxt-link to="/wallet/create">
           <button class="btn btn-primary" v-if="!loading">
             Create NFT
           </button>
-        </router-link>
+        </nuxt-link>
       </div>
       <button class="btn btn-primary" v-if="loading">
         Loading...
@@ -15,18 +15,20 @@
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 pt-4" v-if="!loading">
 
         <div class="card bordered" v-for="item in items" :key="item.image">
-          <div class="w-full aspect-w-1 aspect-h-1 "><img v-bind:src="getIPFSlink(item.imageIpfs)"
-                                                          class="object-cover min-w-full min-h-full h-full mx-auto ">
-          </div>
-          <div class="card-body"><h2 class="card-title">{{ item.name }}</h2>
-            <p>
-              {{ item.description }}
-            </p>
-            <!--            <div class="card-actions">-->
-            <!--              <div class="badge badge-ghost">Article</div>-->
-            <!--              <div class="badge badge-ghost">Photography</div>-->
-            <!--            </div>-->
-          </div>
+          <nuxt-link to="/origin/${item.ipfs}">
+            <figure class="w-full aspect-w-1 aspect-h-1 "><img v-bind:src="getIPFSlink(item.imageIpfs)"
+                                                               class="object-cover min-w-full min-h-full h-full mx-auto ">
+            </figure>
+            <div class="card-body"><h2 class="card-title">{{ item.name }}</h2>
+              <p>
+                {{ item.description }}
+              </p>
+              <!--            <div class="card-actions">-->
+              <!--              <div class="badge badge-ghost">Article</div>-->
+              <!--              <div class="badge badge-ghost">Photography</div>-->
+              <!--            </div>-->
+            </div>
+          </nuxt-link>
         </div>
       </div>
     </div>

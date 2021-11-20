@@ -15,7 +15,7 @@
       <!--href="#about">About</a> <a-->
       <!--class="text-gray-800 font-bold hover:text-purple-600 text-lg text-center w-full no-underline sm:w-auto sm:px-4 py-2 sm:py-1"-->
       <!--href="#features">Features</a> -->
-      <router-link to="/wallet" class="sm:inline-block text-gray-800 font-bold hover:text-purple-600 text-lg sm:w-auto sm:px-4 sm:py-1 cursor-pointer">Wallet</router-link>
+      <nuxt-link to="/wallet" class="sm:inline-block text-gray-800 font-bold hover:text-purple-600 text-lg sm:w-auto sm:px-4 sm:py-1 cursor-pointer">Wallet</nuxt-link>
 
 
 
