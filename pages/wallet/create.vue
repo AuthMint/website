@@ -16,7 +16,7 @@
         <div>
           <label class="btn btn-xs md:btn-sm lg:btn-md xl:btn-lg" v-if="!fileUploading">
             <span class="mt-2 text-base leading-normal">Select a file</span>
-            <input type="file" class="hidden" @change="uploadFile( $event )"/>
+            <input type="file" class="hidden" @change="uploadFile( $event )" />
           </label>
 
           <label class="btn btn-lg loading" v-if="fileUploading">Uploading...</label>

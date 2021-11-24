@@ -14,8 +14,8 @@
       </button>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 pt-4" v-if="!loading">
 
-        <div class="card bordered" v-for="item in items" :key="item.image">
-          <nuxt-link to="/origin/${item.ipfs}">
+        <div class="card bordered" v-for="item in items">
+          <nuxt-link :to="`/nft/${amoAddress}/${item.itemId}`">
             <figure class="w-full aspect-w-1 aspect-h-1 "><img v-bind:src="getIPFSlink(item.imageIpfs)"
                                                                class="object-cover min-w-full min-h-full h-full mx-auto ">
             </figure>
@@ -72,13 +72,15 @@ export default {
     let balance = await amo.balanceOf(this.account)
     for (let i = 0; i < balance; i++) {
       console.log(i)
-      let item = await amo.tokenOfOwnerByIndex(this.account, i)
-      let uri = await amo.tokenURI(item)
-      console.log(item)
+      let itemId = await amo.tokenOfOwnerByIndex(this.account, i)
+      let uri = await amo.tokenURI(itemId)
+      console.log(itemId)
       console.log(uri)
       let ipfsHash = uri.substring(uri.lastIndexOf('/') + 1)
       let itemDetails = await this.$axios.get(this.getIPFSlink(ipfsHash))
-      this.items.push(itemDetails.data)
+      let item = itemDetails.data
+      item.itemId = itemId
+      this.items.push(item)
     }
     console.log(this.items)
     this.loading = false

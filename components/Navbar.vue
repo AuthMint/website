@@ -5,7 +5,7 @@
         class="w-full sm:w-auto self-start sm:self-center flex flex-row sm:flex-none flex-no-wrap justify-between items-center">
       <a href="/" class="no-underline"><img src="/img/logo.png" alt="AWE.SOME Logo" class="h-12 py-1"></a>
       <button id="menuBtn" class="hamburger block sm:hidden focus:outline-none" type="button"
-              v-on:click="navToggle"
+
               aria-label="Show Menu"><span class="hamburger__top-bun"></span><span
           class="hamburger__bottom-bun"></span></button>
     </div>
